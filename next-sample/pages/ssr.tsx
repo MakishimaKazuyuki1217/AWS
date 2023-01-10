@@ -10,10 +10,10 @@ const SSR: NextPage<SSRProps> = (props) => {
 
     return (
         <div>
-            <head>
+            <Head>
                 <title>Create NextApp     </title>
                 <link rel="icon" href="/favicon.ico" />
-            </head>
+            </Head>
             <main>
                 <p>
                     このページはサーバーサイドレンダリングによってアクセス時にサーバーで描画されたページです。
