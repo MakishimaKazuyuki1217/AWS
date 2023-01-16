@@ -5,8 +5,16 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const H1 = styled.h1`
-  color: Blue;
+  color: Red;
 `;
+
+const Badge = styled.span`
+padding: 8px 16px;
+front-weight: bold;
+text-align: center;
+background: red;
+border-radius: 16px;
+`
 
 const Links = styled.div`
   margin-top: 16px;
@@ -25,9 +33,9 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <main className={styles.main}>
       ...
-        <H1> 
+        <Badge> 
           Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </H1>
+        </Badge>
       </main>
       </div>
           
