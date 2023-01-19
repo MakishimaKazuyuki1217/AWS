@@ -18,18 +18,34 @@ export default {
 
 
 // increment という名前でactionを出力するための関数を作る
-const incrementAction = action('increment')
+const incrementAction = action('increment')  
+
+function MyFunction(arg: string)
+{
+    console.log(arg)
+
+    return arg
+}
+
+
 
 export const Primary = (props : any)  => {
     const [count , setCount] = useState(0)
     const onClick = (e: React.MouseEvent) => {
+
         incrementAction(e, count)
-        setCount((c) => c + 1)
+
+        MyFunction("前の会社から株主総会の案内きた～")
+
+        setCount(c => c + 2)
     }
 
     return (
         <StyledButton {...props} variant="primary" onClick={onClick}>
             Count: {count}
+                 <audio id="btn_audio">
+                    
+                </audio>
         </StyledButton>
     )
 }
