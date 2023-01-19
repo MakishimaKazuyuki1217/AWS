@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ComponentMeta, Story } from '@storybook/react'
+import { ComponentMeta, ComponentStory, Story } from '@storybook/react'
 import { StyledButton, StyledButtonProps } from '../components/StyledButton'
 // 新しくactionをインポート
 import { action } from '@storybook/addon-actions'
@@ -13,8 +13,28 @@ export default {
 
     // 以下の行を追加（また、著者がぶっこんできたｗｗｗ
 //    argTypes: { onClick: { action: 'clicked' } },
+    argTypes: {
+        variant: {
+            control: {type: 'radio' },
+            options: [ 'primary', 'success', 'transparent' ]
+        },
+        children: {
+            control: {type: 'text'}, 
+        },
+    },
 
 } as ComponentMeta<typeof StyledButton>
+
+
+const Template: ComponentStory<typeof StyledButton> = (args) => <StyledButton { ...args} />
+
+export const TemplateTest = Template.bind({})
+
+// デフォルトのPropsを設定する
+TemplateTest.args = {
+    variant: 'primary',
+    children: 'Primary',
+}
 
 
 // increment という名前でactionを出力するための関数を作る
