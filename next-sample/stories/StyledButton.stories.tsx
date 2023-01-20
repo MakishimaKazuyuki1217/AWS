@@ -4,6 +4,11 @@ import { StyledButton, StyledButtonProps } from '../components/StyledButton'
 // 新しくactionをインポート
 import { action } from '@storybook/addon-actions'
 
+import MDXDocument from '../stories/StyledButton.mdx'
+
+
+
+
 // ファイル内のStoryの設定（メタデータオブジェクト）
 export default {
     // グループ名
@@ -13,7 +18,14 @@ export default {
 
     // 以下の行を追加（また、著者がぶっこんできたｗｗｗ
 //    argTypes: { onClick: { action: 'clicked' } },
-    argTypes: {
+    parameters: {
+        docs: {
+            page: MDXDocument,
+        },
+    },
+
+/*    
+argTypes: {
         variant: {
             control: {type: 'radio' },
             options: [ 'primary', 'success', 'transparent' ]
@@ -22,6 +34,7 @@ export default {
             control: {type: 'text'}, 
         },
     },
+*/
 
 } as ComponentMeta<typeof StyledButton>
 
