@@ -3,28 +3,29 @@ import { Input } from './index'
 
 // describeで処理をまとめる
 describe('Input', () => {
-    let renderResult: renderResult
+  let renderResult: RenderResult
  
-    // それぞれのテストケース前にコンポーネントを描画し、renderResultにセットする   
-    beforeEach(() => {
-        renderResult = render(<Input id="username" label="Username" />)
-    })
+  // それぞれのテストケース前にコンポーネントを描画し、renderResultにセットする   
+  beforeEach(() => {
+    console.log("test unit test")
+    renderResult = render(<Input id="username" label="Username" />)
+  })
 
-    // テストケース実行後に描画していたコンポーネントを解放する
-    afterEach(() => {
-        renderResult.unmount()
-    })
+  // テストケース実行後に描画していたコンポーネントを解放する
+  afterEach(() => {
+    renderResult.unmount()
+  })
 
-    if ('should empty in input on initial render', () => {
-        // labelがUsernameであるコンポーネントに対応するinputの要素を取得する
-        const inputNode = screen.getByLabelText('Username') as HTMLInputElement
+    // 初期描画時にinput要素が空であることをテスト
+  it('should empty in input on initial render', () => {
+    // labelがUsernameであるコンポーネントに対応するinputの要素を取得する
+    const inputNode = screen.getByLabelText('Username') as HTMLInputElement
 
-        // input要素の表示が空か確認する
-        expect(inputNode).toHaveValeu('')
+    // input要素の表示が空か確認する
+    expect(inputNode).toHaveValue('')
+  })
 
-    })
-
-      // 文字を入力したら、入力した内容が表示されるかをテスト
+  // 文字を入力したら、入力した内容が表示されるかをテスト
   it('should show input text', () => {
     const inputText = 'Test Input Text'
     const inputNode = screen.getByLabelText('Username') as HTMLInputElement
@@ -32,7 +33,7 @@ describe('Input', () => {
     // fireEventを使って、input要素のonChangeイベントを発火する
     fireEvent.change(inputNode, { target: { value: inputText } })
 
-    // input要素に入力したテキストが表示されているか確認する
+  // input要素に入力したテキストが表示されているか確認する
     expect(inputNode).toHaveValue(inputText)
   })
 
